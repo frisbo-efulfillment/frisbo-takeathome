@@ -1,0 +1,11 @@
+version: "3.0"
+
+services:
+    frontend:
+        build: ./react-app
+        ports:
+        - "3000:3000"
+    backend:
+        build: ./php-app
+        ports:
+        - "8000:80"
