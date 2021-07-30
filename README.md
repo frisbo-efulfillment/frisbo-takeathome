@@ -1,8 +1,8 @@
 # Setup
-Copy .env.example into .env
-Fill FRISBO_EMAIL and FRISBO_PASSWORD credentials in .env
-chmod +x ./start.sh
-run start.sh
+Copy .env.example into .env  
+Fill FRISBO_EMAIL and FRISBO_PASSWORD credentials in .env  
+chmod +x ./start.sh  
+run start.sh  
 
 # Frisbo Technical Take-at-home Project
 
