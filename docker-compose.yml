@@ -5,7 +5,11 @@ services:
         build: ./react-app
         ports:
         - "3000:3000"
+        volumes:
+        - "./react-app/:/app"
     backend:
         build: ./php-app
         ports:
         - "8000:80"
+        volumes:
+        - "./php-app/src/:/var/www/html"

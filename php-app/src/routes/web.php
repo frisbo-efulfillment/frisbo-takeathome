@@ -16,3 +16,6 @@
 $router->get('/api', function () use ($router) {
     return "Read the README.md file from the root of the project";
 });
+
+$router->get('/api/organizations', 'OrganizationsController@get');
+$router->get('/api/orders', 'OrdersController@get');
