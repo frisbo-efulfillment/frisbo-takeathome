@@ -3,9 +3,17 @@ version: "3.0"
 services:
     frontend:
         build: ./react-app
+        volumes:
+            - type: bind
+              source: ./react-app/src
+              target: /app/src
         ports:
         - "3000:3000"
     backend:
         build: ./php-app
+        volumes:
+            - type: bind
+              source: ./php-app/src
+              target: /var/www/html
         ports:
         - "8000:80"

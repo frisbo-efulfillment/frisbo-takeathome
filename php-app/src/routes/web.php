@@ -13,6 +13,7 @@
 |
 */
 
-$router->get('/api', function () use ($router) {
-    return "Read the README.md file from the root of the project";
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('organizations', 'OrganizationController@getAll');
+    $router->get('orders[/[{orgId}]]', 'OrderController@getById');
 });
