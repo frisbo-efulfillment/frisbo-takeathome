@@ -53,6 +53,33 @@ In the email you've received, you got some test credentials you can safely use t
 
 Don't worry about the CSS and styling of the Frontend, we won't judge that!
 
+# Docker setup & tips
+
+First build everything using:
+
+```
+docker-compose build
+```
+
+Then, get everything up and running with:
+```
+docker-compose up
+```
+
+Visit `http://localhost:3000` to see the frontend app, if greeted by `Welcome to the Frisbo Takeathome project. Good luck!` everything works and you are ready.
+The API will be exposed on localhost:8000.
+
+Hint: When adding a new dependency either in the php app or in the react app, you will need to rebuild and rerun, the rest of the code is bind mounted already by docker compose.
+
+Adding a new dependency for the react-app:
+
+- add manually in package.json and rebuild
+- or use `npm install packageName --save` and rebuild
+
+Adding a new dependency for the php-app:
+
+- add manually in composer.json and rebuild
+- or use `composer require packageName --ignore-platform-reqs` and rebuild
 
 # Frisbo API Quick Overview
 
@@ -363,6 +390,4 @@ Note that the route is paginated, but for the purposes of this project you will 
     ]
 }
 ```
-
-
 

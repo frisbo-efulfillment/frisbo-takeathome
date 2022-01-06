@@ -14,5 +14,5 @@
 */
 
 $router->get('/api', function () use ($router) {
-    return "Read the README.md file from the root of the project";
+    return "Welcome to the Frisbo Takeathome project. Good luck!";
 });

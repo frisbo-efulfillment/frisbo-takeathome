@@ -5,7 +5,17 @@ services:
         build: ./react-app
         ports:
         - "3000:3000"
+        volumes:
+        - ./react-app/src:/app/src
+        - ./react-app/public:/app/public
+        - node_modules:/app/node_modules
     backend:
         build: ./php-app
         ports:
         - "8000:80"
+        volumes:
+        - vendor:/var/www/html/vendor
+        - ./php-app/src:/var/www/html
+volumes:
+    node_modules:
+    vendor:
