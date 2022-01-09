@@ -1,0 +1,49 @@
+.container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.organisations-select {
+    width: 100%;
+    margin: 4rem 0 1rem 0;
+}
+
+.table {
+    margin: 1rem 0;
+}
+
+.header {
+    margin: 3rem 0 1rem 0;
+}
+
+.MuiTypography-root {
+    color: darkslategray;
+}
+
+.profession {
+    color: darkslategray;
+}
+
+.css-lbeawz {
+    color: sandybrown;
+}
+
+.success {
+    color:green;
+}
+
+.pre-success {
+    color: sandybrown;
+}
+
+.canceled {
+    color: red;
+}
+
+.other {
+    color: darkslategray;
+}
+
+.ordersLoading {
+    margin: 1rem 0;
+}
