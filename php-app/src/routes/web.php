@@ -13,6 +13,15 @@
 |
 */
 
-$router->get('/api', function () use ($router) {
-    return "Welcome to the Frisbo Takeathome project. Good luck!";
+// $router->get('/api', function () use ($router) {
+//     return "Welcome to the Frisbo Takeathome project. Good luck!";
+// });
+
+
+$router->group(['prefix' => 'api'], function() use ($router) {
+    $router->get('/', function () {});
+
+    $router->get('/organizations', 'OrganizationsController@index');
+
+    $router->get('/orders[/{organizationId}]', 'OrdersController@index');
 });
