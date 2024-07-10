@@ -1,8 +1,6 @@
 import React from 'react';
 
 class Takeathome extends React.Component {
-    
-
     constructor(props) {
         super(props);
         this.backend_url = "/api";
