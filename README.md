@@ -19,7 +19,7 @@ Everything else is subjective anyway! When we'll be reviewing the code together,
 
 For this take-at-home project, you'll be creating a backend to serve as a proxy for the real Frisbo API and a minimal frontend to display data from your backend.
 The projects are already pre-configured so you don't spend alot of time configuring them and so that you can focus on the code itself.
-In the email you've received, you got some test credentials you can safely use to the Frisbo API. The proxy will only use those credentials so feel free to cache the token for those if you wish.
+In the email you've received, you got some test credentials you can safely use to the Frisbo API. The proxy you are creating will only use those credentials so feel free to cache the token for those if you wish.
 
 1. Create a minimal route in the backend with the following specifications:
 
@@ -33,7 +33,7 @@ In the email you've received, you got some test credentials you can safely use t
     - it will use the Frisbo API credentials you've received
     - if no `organization_id` parameter exists, it will agreggate the results of the Frisbo API calls for `https://api.frisbo.ro/v1/organizations/{organizationId}/orders` for each organization your user is assigned to
     - if `organization_id` parameter exists, it will get the results of the Frisbo API calls for `https://api.frisbo.ro/v1/organizations/{organizationId}/orders` 
-    - it will output the first 100 orders of the aggregated result (in case organization_id exists) or the direct result (in case organization_id exists) by ordering them in descending order by ordered_date field
+    - it will output the first 100 orders of the aggregated result (in case organization_id does not exist) or the direct result (in case organization_id exists) by ordering them in descending order by ordered_date field
 
 3. On the frontend, modify the default component and add a dropdown for organizations and a table for orders. The table will have the following columns:
     - Order Id
@@ -42,14 +42,14 @@ In the email you've received, you got some test credentials you can safely use t
     - Number of products
     - Fulfillment status
 
-4. Populate the dropdown created above by a call to your backend organizations route. By default, the dropdown for organizations will have the `ALL` value. The labels for the organizations need to be the `alias` property the backend returns.
+4. Populate the dropdown created above by a call to your backend organizations route. By default, the dropdown for organizations will have the `ALL` value. The `ALL` value means that no organization_id parameter is sent to the backend. The labels for the organizations need to be the `alias` property the backend returns.
 
 5. Populate the table with orders by calling your backend orders route with the parameter `organization_id` taken from the dropdown. If `ALL` is selected, then no organization_id parameter will be sent. The mappings for the table are as following:
     - Order Id -> `order_id` field of the order
     - Organization Name -> the `alias` of the organization with id `organization_id` from the order
     - Ordered Date -> `ordered_date` field of the order
     - Number of products -> a count of the elements of the `products` field from the order
-    - Fulfillment status -> `fulfillment.status` field of the order
+    - Fulfillment status -> `fulfillment_status` field of the order
 
 Don't worry about the CSS and styling of the Frontend, we won't judge that!
 
