@@ -35,4 +35,9 @@ return [
         ],
     ],
 
+    'frisbo' => [
+        'email' => env('FRISBO_API_EMAIL'),
+        'password' => env('FRISBO_API_PASSWORD'),
+    ],
+
 ];

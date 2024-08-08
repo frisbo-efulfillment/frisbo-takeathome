@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\FrisboApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function (Request $request) {
-    return "Welcome to the Frisbo Takeathome project. Good luck!";
-});
+Route::get('/organizations', [FrisboApiController::class, 'getOrganizations']);
+Route::get('/orders', [FrisboApiController::class, 'getOrders']);
