@@ -52,23 +52,52 @@ class FrisboClient
      */
     public function getOrders(?int $organizationId = null): array
     {
-        if ($organizationId) {
-            $response = $this->request('GET', "/organizations/{$organizationId}/orders");
-            $orders = $response['data'] ?? [];
-        } else {
-            $orders = [];
-            foreach (array_keys($this->organizationMapping) as $orgId) {
-                $response = $this->request('GET', "/organizations/{$orgId}/orders");
-                $orders = array_merge($orders, $response['data'] ?? []);
-            }
-        }
+        $orders = $organizationId
+            ? $this->getOrdersForOrganization($organizationId)
+            : $this->getOrdersForAllOrganizations();
 
-        $ordersWithOrgNames = array_map(function($order) {
+        return $this->attachOrganizationNames($orders);
+    }
+
+
+    /**
+     * @param array $orders
+     * @return array
+     */
+    private function attachOrganizationNames(array $orders): array
+    {
+        return array_map(function($order) {
             $order['organization_name'] = $this->organizationMapping[$order['organization_id']] ?? 'Unknown';
             return $order;
         }, $orders);
+    }
 
-        return $ordersWithOrgNames;
+
+    /**
+     *
+     * @param int $organizationId
+     * @return array
+     */
+    private function getOrdersForOrganization(int $organizationId): array
+    {
+        $response = $this->request('GET', "/organizations/{$organizationId}/orders");
+        return $response['data'] ?? [];
+    }
+
+
+
+
+    /**
+     *
+     * @return array
+     */
+    private function getOrdersForAllOrganizations(): array
+    {
+        $orders = [];
+        foreach (array_keys($this->organizationMapping) as $orgId) {
+            $orders = array_merge($orders, $this->getOrdersForOrganization($orgId));
+        }
+        return $orders;
     }
 
     /**
